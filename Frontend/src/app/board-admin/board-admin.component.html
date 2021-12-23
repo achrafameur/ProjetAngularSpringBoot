@@ -1,0 +1,38 @@
+<div class="container">
+  <h1 class="display-4" style="text-align:center">{{ content }}</h1>
+  <div>
+    <!-- <div style="margin-left: 500px;display: flex;margin-top: 10px;">
+        <label for="exampleInputEmail1" class="form-label">Rechercher Par Mot Clé :</label>
+        <input [(ngModel)]="texte" class="form-control w-25" style="margin-left: 20px;">
+    </div> -->
+    
+    <div style="margin-top: 10px;"> 
+    <table *ngIf="users; else vide" border="1" class="table table-dark table-striped table-hover" style="width: 80%; margin: auto;text-align: center;">
+        <thead>
+            <tr>
+                <td scope="col">ID</td>
+                <td scope="col">Username</td>
+                <td scope="col">Email</td>
+                <td scope="col">Role</td>
+                <td scope="col">Actions</td>
+            </tr>
+        </thead>
+        <tbody *ngFor="let el of users">
+            <tr>
+                <td scope="row" style="color: white;">{{el.id}}</td>
+                <td scope="row" style="color: white;"><a>{{el.username  | uppercase}}</a></td>
+                <td scope="row" style="color: white;">{{el.email}}</td>
+                <td scope="row" style="color: white;" *ngFor="let elm of el.roles">{{elm.name}}</td>
+                <td style="color: white;" >
+                    <button class="btn btn-danger" type="button" (click)=delete(el.id)>Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br>
+    </div>
+    
+    <ng-template #vide> <h1 class="display-4" style="text-align:center;color: red;">No Users</h1></ng-template>
+
+</div>

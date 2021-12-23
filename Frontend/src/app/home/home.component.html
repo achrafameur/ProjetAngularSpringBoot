@@ -1,0 +1,85 @@
+<div class="d-flex" style="justify-content: space-around;" *ngIf="!isLoggedIn">
+<div style="margin-top:220px ;">
+  <h2 style="color: #6626A0;">Welcome To Our Website </h2>
+  <p style="font-family: Georgia, serif;margin-top:40px ;font-size:200%;">Our website consists of posting advertisements for the sale and rental of any product.<br>
+    It makes the search action easier for everyone.<br>
+    Do not hesitate to <a routerLink="/register"> join us </a>
+  </p>
+</div>
+<div class="ml-4" style="margin-top:150px ;">
+  <img src="../../assets/images/—Pngtree—modern flat design concept of_5332875.png" width="500px" height="500px" alt="img" >
+  <br><br><br><br><br><br><br><br><br><br>
+</div>
+</div>
+
+<h1 class="display-4" style="text-align: center" *ngIf="isLoggedIn">
+  Announcements
+</h1>
+
+<div class="d-flex"  *ngIf="isLoggedIn || annonces" >
+  <div>
+    <div
+      style="margin-left: 90px; display: flex; margin-top: 30px"
+    >
+      <label class="form-label">Search By Title :</label>
+      <input
+        [(ngModel)]="texte"
+        class="form-control w-25"
+        style="margin-left: 20px"
+      />
+    </div>
+    <div
+      class="container"
+      style="justify-content: center"
+      *ngFor="let el of annonces"
+    >
+      <div
+        class="card mb-3 ml-3 mt-4 rounded"
+        style="max-width: 540px"
+        *ngIf="el.status == 'Accepted'"
+      >
+        <div class="row g-0">
+          <div class="col-md-4 "  style="margin: auto;">
+            <img src={{el.photo}} class="img-fluid rounded-start" />
+            <!-- <button (click)=getimage(el.id)>SHOW IMAGE</button> -->
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title" style="text-align: center">
+                <strong>TITLE :</strong>{{ el.title }}
+              </h5>
+              <p class="card-text">
+                <strong>DESCRIPTION :</strong>{{ el.description }}
+              </p>
+              <p class="card-text">
+                <strong>PHONE NUMBER :</strong>{{ el.numtel }}
+              </p>
+              <!-- <p class="card-text">
+            <strong>STATUS :</strong>{{el.status}}
+          </p> -->
+              <p
+                class="card-text d-flex"
+                style="justify-content: space-between"
+              >
+                <small class="text-muted"
+                  ><strong>OWNER :</strong>{{ el.user.username }}</small
+                >
+                <button
+                  class="btn btn-sm btn-secondary"
+                  routerLink="/details/{{ el.id }}"
+                >
+                  ViewDetails
+                </button>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ml-4" style="margin-top: 90px;">
+    <img
+      src="https://ih1.redbubble.net/image.2470542960.5969/st,small,507x507-pad,600x600,f8f8f8.jpg" height="700px" width="600px"
+    />
+  </div>
+</div>

@@ -1,0 +1,62 @@
+<div>
+<h1 class="display-4" style="text-align: center">UPDATE Announcement</h1>
+<form class="card p-2 mt-3" #f="ngForm" (ngSubmit)="modifier()">
+  <div class="form-group">
+    <label for="exampleInputEmail1">USER ID</label>
+    <input
+      type="text"
+      class="form-control"
+      id="exampleInputEmail1"
+      aria-describedby="emailHelp"
+      value="{{ currentUser.id }}"
+    />
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">TITLE</label>
+    <input
+      type="text"
+      class="form-control"
+      id="exampleInputEmail1"
+      aria-describedby="emailHelp"
+      placeholder="Enter title"
+      name="title"
+      [(ngModel)]="annonce.title"
+      #nom="ngModel"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">DESCRIPTION</label>
+    <textarea
+      class="form-control"
+      id="exampleFormControlTextarea1"
+      rows="5"
+      name="description"
+      [(ngModel)]="annonce.description"
+      #nom="ngModel"
+      required
+    ></textarea>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">PHONE NUMBER </label>
+    <input
+      type="text"
+      class="form-control"
+      id="exampleInputPassword1"
+      placeholder="Enter phone number "
+      name="numtel"
+      [(ngModel)]="annonce.numtel"
+      #nom="ngModel"
+      required
+    />
+  </div>
+  <button type="submit" class="btn btn-success btn-lg" [disabled]="!f.valid">
+    Submit
+  </button>
+</form>
+<br><br><br><br><br><br><br>
+</div>
+<div class="alert alert-success" role="alert" *ngIf="isAdded">
+  <h4 class="alert-heading">Announcement Updated successfully !</h4>
+  <button class="btn btn-secondary btn-sm ml-2"routerLink="/profile">Go Back To your profile </button>
+</div>

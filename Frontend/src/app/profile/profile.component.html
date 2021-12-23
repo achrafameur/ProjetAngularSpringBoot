@@ -1,0 +1,60 @@
+<div class="container" *ngIf="currentUser; else loggedOut">
+  <header>
+    <h1 class="display-4 mb-3" style="text-align:center">Your Profile</h1>
+  </header>
+  <p>
+    <strong>ID :</strong>
+    {{ currentUser.id }}
+  </p>
+  <!-- <p>
+    <strong>Token :</strong>
+    {{ currentUser.accessToken }}
+  </p> -->
+  <p>
+    <strong>Email :</strong>
+    {{ currentUser.email }}
+  </p>
+  <p>
+    <strong>Username :</strong>
+    {{ currentUser.username }}
+  </p>
+  <strong>Roles :</strong>
+  <ul>
+    <li *ngFor="let role of currentUser.roles">
+      {{ role }}
+    </li>
+  </ul>
+  <strong>My Announcements :</strong><br><br>
+    <table *ngIf="annonces; else vide" class="table table-bordered" style="text-align: center;">
+      <thead>
+      <tr>
+        <td>ID</td>
+        <td>TITLE</td>
+        <td>DESCIPTION</td>
+        <td>STATUS</td>
+        <td>ACTIONS</td>
+      </tr>
+    </thead>
+    <tbody *ngFor="let el of annonces">
+      <tr>
+        <td>{{el.id}}</td>
+        <td>{{el.title}}</td>
+        <td>{{el.description}}</td>
+        <td>{{el.status}}</td>
+        <td>
+          <button class="btn btn-danger btn-sm" (click)=delete(el.id)>DELETE</button>
+          <button class="btn btn-info btn-sm ml-2" routerLink="/updateAnnonce/{{el.id}}">UPDATE</button>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+    <br><br><br><br><br><br><br><br><br><br><br>
+</div>
+
+<ng-template #loggedOut>
+  Please login.
+</ng-template>
+
+<ng-template #vide> 
+  <h2 style="color: red;">Tableau vide </h2>
+</ng-template>

@@ -1,0 +1,75 @@
+<div>
+
+  <h1 class="display-4" style="text-align: center">Add Announcement</h1>
+  <form class="card p-2 mt-3" #f="ngForm" (ngSubmit)="ajouter(f)">
+    <div class="form-group">
+      <label for="exampleInputEmail1">USER ID</label>
+      <input
+      type="text"
+      class="form-control"
+      id="exampleInputEmail1"
+      aria-describedby="emailHelp"
+      value="{{ currentUser.id }}"
+      />
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">TITLE</label>
+      <input
+      type="text"
+      class="form-control"
+      id="exampleInputEmail1"
+      aria-describedby="emailHelp"
+      placeholder="Enter title"
+      ngModel
+      name="title"
+      required
+      />
+    </div>
+    <div class="form-group">
+    <label for="exampleFormControlTextarea1">DESCRIPTION</label>
+    <textarea
+    class="form-control"
+    id="exampleFormControlTextarea1"
+    rows="5"
+    ngModel
+    name="description"
+    required
+    ></textarea>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">PHONE NUMBER</label>
+    <input
+    type="text"
+    class="form-control"
+    id="exampleInputPassword1"
+    placeholder="Enter phone number "
+    ngModel
+    name="numtel"
+    required
+    />
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">PHOTO</label>
+    <input
+    type="text"
+    class="form-control"
+    id="exampleInputEmail1"
+    aria-describedby="emailHelp"
+    placeholder="Enter title"
+    ngModel
+    name="photo"
+    required
+    />
+  </div>
+  <button type="submit" class="btn btn-success btn-lg" [disabled]="!f.valid">
+    Submit
+  </button>
+</form>
+<br><br><br><br>
+</div>
+<div class="alert alert-success" role="alert" *ngIf="isAdded">
+  <h4 class="alert-heading">Announcement Added successfully !</h4>
+  <p>you successfully added your Announcement To admin's List</p>
+  <hr>
+  <p class="mb-0">Just wait for the acceptation</p>
+</div>
