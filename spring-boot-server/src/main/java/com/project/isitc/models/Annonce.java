@@ -31,9 +31,7 @@ public class Annonce {
 	private String description;
 	
 	@NotBlank
-	@Size(min=8,max = 8)
-//	@Pattern(regexp = "^[2,4,5,7,9]{1,1}$", 
-//	message = "Le Numero de Telephone doit etre valide")
+	@Pattern(regexp = "^[0-9]{8}")
 	private String numtel;
 	
 	private String status="waiting";
