@@ -1,7 +1,7 @@
 <div>
 
   <h1 class="display-4" style="text-align: center">Add Announcement</h1>
-  <form class="card p-2 mt-3" #f="ngForm" (ngSubmit)="ajouter(f)">
+  <form class="card p-2 mt-3" #f="ngForm" (ngSubmit)="ajouter(f)" >
     <div class="form-group">
       <label for="exampleInputEmail1">USER ID</label>
       <input
@@ -30,6 +30,7 @@
     <textarea
     class="form-control"
     id="exampleFormControlTextarea1"
+    placeholder="Enter description ... "
     rows="5"
     ngModel
     name="description"
@@ -55,7 +56,7 @@
     class="form-control"
     id="exampleInputEmail1"
     aria-describedby="emailHelp"
-    placeholder="Enter title"
+    placeholder="Enter image url "
     ngModel
     name="photo"
     required
@@ -73,3 +74,4 @@
   <hr>
   <p class="mb-0">Just wait for the acceptation</p>
 </div>
+
